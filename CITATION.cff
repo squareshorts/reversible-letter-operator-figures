@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "Aggregate accuracy conceals grade-associated redistribution of spatial transformation choices in reversible-letter judgments"
+authors:
+  - family-names: "Resque"
+    given-names: "Deusa Priscila da Silva"
+  - family-names: "Lobato"
+    given-names: "Adriany Maria de Moura"
+  - family-names: "da Silva"
+    given-names: "Carolina Gomes"
+  - family-names: "da Cruz Filho"
+    given-names: "Daniel Alves"
+  - family-names: "da Fonseca"
+    given-names: "Susanne Suely Santos"
+  - family-names: "Matos"
+    given-names: "Felipe de Oliveira"
+  - family-names: "Pereira"
+    given-names: "Antonio"
+version: 1.0.0

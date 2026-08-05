@@ -1,0 +1,6 @@
+benchmark_name,expected_accuracy,observed_accuracy
+Theoretical Uniform Chance (1/3),0.3333333333333333,0.34507042253521125
+Task-Level Empirical Position Null,0.32702464788732394,0.34507042253521125
+Leave-One-Trial-Out Participant Null,0.3210093896713615,0.34507042253521125
+Dirichlet-Smoothed (Laplace) Participant Null,0.32972837022132795,0.34507042253521125
+Participant-Specific Empirical Null (Original),0.32702464788732394,0.34507042253521125

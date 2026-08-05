@@ -1,0 +1,16 @@
+{
+  "title": "Aggregate accuracy conceals grade-associated redistribution of spatial transformation choices in reversible-letter judgments",
+  "upload_type": "software",
+  "creators": [
+    { "name": "Resque, Deusa Priscila da Silva" },
+    { "name": "Lobato, Adriany Maria de Moura" },
+    { "name": "da Silva, Carolina Gomes" },
+    { "name": "da Cruz Filho, Daniel Alves" },
+    { "name": "da Fonseca, Susanne Suely Santos" },
+    { "name": "Matos, Felipe de Oliveira" },
+    { "name": "Pereira, Antonio" }
+  ],
+  "description": "Reproducibility repository for the figures in the reversible-letter operator manuscript.",
+  "access_right": "open",
+  "license": "MIT"
+}

@@ -1,0 +1,13 @@
+task,model_type,aic
+lowercase_identification,Linear,782.428049059469
+lowercase_identification,Categorical,782.4662672457723
+lowercase_identification,Literacy_Stage,774.1570192962718
+lowercase_identification,Piecewise_Step3,777.3407417405505
+mirror,Linear,724.0685054441401
+mirror,Categorical,718.0599370038093
+mirror,Literacy_Stage,711.4229686701741
+mirror,Piecewise_Step3,710.4008126744208
+rotation,Linear,1070.8920070235224
+rotation,Categorical,1045.2593135634686
+rotation,Literacy_Stage,1049.2609040770792
+rotation,Piecewise_Step3,1051.7928367906952

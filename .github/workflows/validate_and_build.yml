@@ -1,0 +1,45 @@
+name: Validate and Build Figures
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up R
+        uses: r-lib/actions/setup-r@v2
+        with:
+          r-version: '4.5.2'
+
+      - name: Cache renv packages
+        uses: actions/cache@v3
+        with:
+          path: ~/.local/share/renv
+          key: ${{ runner.os }}-renv-${{ hashFiles('**/renv.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-renv-
+
+      - name: Restore renv
+        run: |
+          Rscript -e "if (!requireNamespace('renv', quietly = TRUE)) install.packages('renv')"
+          Rscript -e "renv::restore()"
+
+      - name: Validate Inputs
+        run: Rscript scripts/validate_inputs.R
+
+      - name: Generate Figures
+        run: Rscript scripts/make_all_figures.R
+
+      - name: Verify Outputs
+        run: Rscript scripts/verify_outputs.R
+
+      - name: Run Tests
+        run: Rscript tests/test_all.R

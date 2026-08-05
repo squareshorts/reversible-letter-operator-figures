@@ -1,0 +1,7 @@
+Package: ReversibleLetterOperatorFigures
+Title: Reproducibility repository for Reversible-Letter Operator Figures
+Version: 1.0.0
+Authors@R: person("Deusa", "Resque", email="none@none.com", role=c("aut", "cre"))
+Description: Scripts and data to generate figures for the manuscript.
+Depends: R (>= 4.0.0)
+License: MIT

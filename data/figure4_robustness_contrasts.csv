@@ -1,0 +1,29 @@
+analysis_family,model_specification,estimand,operator,estimate_pp,ci_low_pp,ci_high_pp
+primary,pooled,grades_35_minus_12,left_right_reflection,-28.016215109269265,-37.71105481061282,-18.666982712686817
+primary,pooled,grades_35_minus_12,rotation_180,16.884166920916073,7.058865687610616,26.737228975243127
+grade_age,grade_numeric,grade4_minus_grade2,left_right_reflection,-15.394261859979492,-21.869841376846914,-8.707626725111274
+grade_age,grade_numeric,grade4_minus_grade2,rotation_180,9.334589109744638,1.8695145083501572,17.45165483310165
+grade_age,grade_categorical,2_minus_1,left_right_reflection,-7.041236353651364,-24.802832045751565,12.447730776291966
+grade_age,grade_categorical,3_minus_2,left_right_reflection,-30.406876446584015,-44.692663126204515,-17.304072304537417
+grade_age,grade_categorical,4_minus_3,left_right_reflection,14.041799572518965,2.3465172426519914,27.367896302608223
+grade_age,grade_categorical,5_minus_4,left_right_reflection,-4.703830987546876,-21.694077352187087,12.103106715840172
+grade_age,grade_categorical,5_minus_1,left_right_reflection,-28.11014421526329,-44.44081053963357,-10.8522137697797
+grade_age,grade_categorical,2_minus_1,rotation_180,-0.2130687923632415,-13.96319650359828,14.533407089400262
+grade_age,grade_categorical,3_minus_2,rotation_180,18.418794481564017,4.107090799112461,32.75569267268106
+grade_age,grade_categorical,4_minus_3,rotation_180,-0.9342595338442692,-18.05452985533433,16.303543808950366
+grade_age,grade_categorical,5_minus_4,rotation_180,-3.712820511871179,-24.57145700523516,19.496907725787135
+grade_age,grade_categorical,5_minus_1,rotation_180,13.558645643485324,-3.4033956647364265,32.756864777184454
+grade_age,age_numeric,age9_minus_age7,left_right_reflection,-16.43082658254513,-24.675338983932665,-8.45203586864167
+grade_age,age_numeric,age9_minus_age7,rotation_180,7.198612255731096,-0.10455582448565502,14.512354300007669
+grade_age,age_factor,age9_minus_age7,left_right_reflection,-18.814248949891745,-32.970770490090295,-3.3928938630667296
+grade_age,age_factor,age9_minus_age7,rotation_180,14.558736153857891,-0.9874355698027432,28.83861764260273
+grade_age,exclusion_of_school,Grades 3-5 minus Grades 1-2,left_right_reflection,-27.87554099394529,-37.824265917595056,-18.126414972054796
+grade_age,exclusion_of_school,Grades 3-5 minus Grades 1-2,rotation_180,21.887063706034017,10.424724439691625,33.182702545927754
+sex_heterogeneity,stratified,grades_35_minus_12_in_female,left_right_reflection,-22.441779560394735,-38.191767864664314,-8.535181684633208
+sex_heterogeneity,stratified,grades_35_minus_12_in_male,left_right_reflection,-33.117133191501644,-45.99214188568244,-21.10278849876885
+sex_heterogeneity,stratified,grades_35_minus_12_in_female,rotation_180,9.712316187062031,-4.348312282058849,24.14510159556298
+sex_heterogeneity,stratified,grades_35_minus_12_in_male,rotation_180,23.28489457273785,10.52166553879996,36.76176332206875
+school_heterogeneity,stratified,grades_35_minus_12_at_School B,left_right_reflection,-21.333315860703735,-40.94117004679204,-4.713724102314809
+school_heterogeneity,stratified,grades_35_minus_12_at_School A,left_right_reflection,-31.20910667447052,-42.61652357579138,-19.796214691380637
+school_heterogeneity,stratified,grades_35_minus_12_at_School B,rotation_180,25.06965564067925,3.17143987694997,46.72656882580504
+school_heterogeneity,stratified,grades_35_minus_12_at_School A,rotation_180,12.888174655708037,3.030095729826487,23.35695011711425
