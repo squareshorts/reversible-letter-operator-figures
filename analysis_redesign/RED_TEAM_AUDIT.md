@@ -2,22 +2,32 @@
 
 ## Status
 
-This branch is isolated from `master`. It is a redesign workspace; no manuscript should be declared submission-ready from the current public aggregate outputs.
+This branch is isolated from `master`. It is a redesign workspace. The private analysis workspace has now been inspected; no manuscript should be declared submission-ready until the demographic source is reconciled and the redesigned analyses are rerun.
 
 ## Findings that must be resolved
 
-### 1. Grade-specific public outputs are inconsistent with the corrected participant table
+### 1. The private analysis data still encode Grade 1 = 43 and Grade 2 = 27
 
-The corrected manuscript table reports Grade 1 = 44 and Grade 2 = 26. The current public Figure 2 table encodes Grade 1 = 43 and Grade 2 = 27. This is identifiable from the exact observed proportions and task trial totals: Grade 1 probabilities have denominator 172 (= 43 participants x 4 trials) and Grade 2 probabilities have denominator 108 (= 27 x 4), and these denominators sum with Grades 3-5 to all 568 task trials.
+The corrected manuscript table reports Grade 1 = 44 and Grade 2 = 26, but the private authoritative analysis file `data_intermediate/trial_level_v3.csv` contains 43 Grade-1 participants and 27 Grade-2 participants. The public Figure 2 table is therefore consistent with the current private analysis file, not with the corrected Table 1.
 
 Consequences:
-- the old Grades 1-2 versus Grades 3-5 contrast is not changed by moving one child between Grades 1 and 2, because both grades are in the same broad group;
-- five-grade plots, numeric-grade models, categorical-grade models, adjacent-grade contrasts, and grade-model comparisons must be regenerated from the authoritative corrected participant-level data;
-- the corrected Table 1 and the current public Figure 2 cannot both be treated as authoritative without reconciliation.
+- the old Grades 1-2 versus Grades 3-5 contrast is unchanged by a single 1/2 reassignment because both grades remain in the same broad group;
+- five-grade plots, numeric-grade models, categorical-grade models, adjacent-grade contrasts, and grade-model comparisons cannot be finalized until the corrected participant-level grade source is identified;
+- the corrected Table 1 and the current analysis dataset cannot both be treated as authoritative without reconciliation.
 
-### 2. The rotation grade pattern is non-monotonic
+The current analysis table also has one Grade-2 child recorded as age 6 years. Because the corrected descriptive table gives a Grade-2 minimum of 7;04, this is a useful reconciliation flag, but it is not sufficient to identify the corrected participant without the source used to create the new age-by-grade table.
 
-The current aggregate categorical-grade robustness output shows the left-right-reflection contrasts (percentage points):
+### 2. The reconstruction audit contains a demographic-resolution inconsistency
+
+`scripts/prepare_data.py` explicitly builds analytical age and grade from the cohort spreadsheet (`age_sheet`, `grade_sheet`) while retaining raw PsychoPy values separately. However, `audit/discrepancy_log.csv` labels raw-versus-spreadsheet demographic mismatches with the resolution `Use raw value`.
+
+One important example is P131: raw PsychoPy metadata report age 9 / Grade 4, while the spreadsheet reports age 7 / Grade 2. The analytical table uses the spreadsheet values despite the discrepancy log stating `Use raw value`.
+
+This does not establish which source is correct. It establishes that the provenance/resolution text and the actual analytical choice disagree and must be reconciled before a new submission.
+
+### 3. The rotation grade pattern is non-monotonic in the current data
+
+The current categorical-grade robustness output shows left-right-reflection contrasts (percentage points):
 - Grade 2 - Grade 1: -7.04, 95% CI [-24.80, 12.45]
 - Grade 3 - Grade 2: -30.41, 95% CI [-44.69, -17.30]
 - Grade 4 - Grade 3: +14.04, 95% CI [2.35, 27.37]
@@ -29,21 +39,23 @@ For correct 180-degree rotation:
 - Grade 4 - Grade 3: -0.93, 95% CI [-18.05, 16.30]
 - Grade 5 - Grade 4: -3.71, 95% CI [-24.57, 19.50]
 
-The old broad two-group summary therefore conceals an important feature: the strongest observed shift is concentrated around the Grade 2-to-3 boundary, not a simple monotonic progression across Grades 1-5.
+The broad two-group summary therefore conceals an important feature: the strongest observed rotation shift is concentrated around the Grade 2-to-3 boundary, not a simple monotonic progression across Grades 1-5.
 
-For the rotation task, current AIC values are:
+For rotation, current AIC values are:
 - categorical grade: 1045.26
 - Grades 1-2 versus Grades 3-5: 1049.26
 - piecewise step at Grade 3: 1051.79
 - linear grade: 1070.89
 
-The categorical representation is therefore the best of these four by AIC for the rotation task. These values are diagnostic only and must be regenerated after grade reconciliation.
+These are diagnostic values only and must be regenerated after demographic reconciliation.
 
-### 3. Exact chronological age must replace the old age robustness variable
+### 4. Exact chronological age is not present in the private analysis workspace
 
-The corrected participant table reports exact chronological ages derived from date of birth and testing date for all 142 children, with an overall range of 5 years 9 months to 11 years 7 months. The old robustness analysis used a recorded age-in-years variable. Its age contrasts must not be carried into a new manuscript without rerunning them using exact age in months.
+The private trial-level files contain integer age (`age_years`) plus integer raw age metadata. They do not contain DOB, exact age in months, or the participant-level exact ages used to create the corrected manuscript table (5;09 to 11;07 years).
 
-### 4. Age overlap is a design feature that must be modeled explicitly
+Therefore the old continuous-age robustness analysis cannot simply be relabeled as exact chronological age. A final age-adjusted redesign requires the participant-level exact-age source used for the corrected table.
+
+### 5. Age overlap must be modeled explicitly after exact ages are obtained
 
 The corrected table implies adjacent-grade chronological-age common-support windows:
 - Grades 1 and 2: 7;04 to 8;01
@@ -51,15 +63,17 @@ The corrected table implies adjacent-grade chronological-age common-support wind
 - Grades 3 and 4: 9;00 to 10;02
 - Grades 4 and 5: 10;03 to 11;07
 
-Participant counts within these overlap windows cannot be obtained from the public aggregate repository. They must be computed from exact participant-level ages before conditional grade effects are interpreted.
+Participant counts inside those exact-age overlap windows cannot be reconstructed from the current private workspace because only integer ages are stored.
 
-### 5. Socioeconomic imbalance is a prospective reviewer concern
+### 6. Socioeconomic covariates are available and should be tested, but the earlier claimed large income imbalance was incorrect
 
-The published cohort table shows a large family-income imbalance across the old broad grade groups. Pooling sex strata from the published table gives:
-- Grades 1-2: 34/70 (48.6%) at <=1 minimum wage
-- Grades 3-5: 9/72 (12.5%) at <=1 minimum wage
+The private participant-level analysis data contain `family_income` and `guardian_education`. In the current 43/27 grade coding, family income below one minimum wage is 23/70 (32.9%) in Grades 1-2 and 20/72 (27.8%) in Grades 3-5. Thus there is not the previously claimed 48.6% versus 12.5% imbalance.
 
-Family-tutor education also differs strongly across the published broad groups. If participant-level socioeconomic variables exist in the authoritative workspace, the redesigned analysis must include prespecified sensitivity models for family income and tutor education. If they are not available at participant level, the manuscript must state that they could not be adjusted and must not attribute grade associations specifically to instruction or maturation.
+Nevertheless, family income and guardian education are plausible confounders and should be included in prespecified sensitivity models after the demographic source is reconciled.
+
+### 7. The existing random-intercept sensitivity is not cleanly converged for rotation
+
+`analysis_remaining_robustness/03_repeated_measures/model_diagnostics.txt` records repeated `false convergence (8)` warnings for the rotation `mblogit` random-intercept model. The next manuscript must not state that all random-intercept models converged cleanly. Either the sensitivity model must be stabilized/replaced or its instability must be reported.
 
 ## Redesigned inferential hierarchy
 
@@ -76,7 +90,7 @@ For each task:
 
 ### Exact-age analysis
 
-Use exact chronological age in months.
+After exact participant ages are obtained:
 
 1. Linear age:
 `operator ~ age_months_centered + sex + school + base_letter + centered_trial_index`
@@ -84,7 +98,7 @@ Use exact chronological age in months.
 2. Flexible age sensitivity, if estimable without instability:
 `operator ~ ns(age_months_centered, df = 3) + sex + school + base_letter + centered_trial_index`
 
-Report standardized age trajectories on the observed support. Avoid predictions outside the observed age range.
+Report standardized age trajectories only over observed support.
 
 ### Joint age-grade sensitivity
 
@@ -92,7 +106,7 @@ For each task:
 
 `operator ~ factor(grade) + age_months_centered + sex + school + base_letter + centered_trial_index`
 
-Before interpreting coefficients or marginal contrasts, report:
+Before interpreting marginal contrasts, report:
 - grade-age association;
 - design-matrix rank and condition number;
 - participant counts by grade and exact-age support;
@@ -102,21 +116,21 @@ This is a conditional association model, not a causal schooling model.
 
 ### Adjacent-grade common-support analysis
 
-For each adjacent pair of grades, restrict to participants whose exact chronological ages lie in the overlap of the two grades' observed age ranges. Within that common support, fit the grade contrast with exact age retained as a covariate. Report participant counts in each grade, trials, standardized probability difference, participant-cluster bootstrap interval, convergence, and any sparse category.
+For each adjacent pair, restrict to participants whose exact chronological ages lie in the overlap of the two grades' observed age ranges. Within that common support, fit the grade contrast with exact age retained as a covariate. Report participant counts, trials, standardized probability difference, participant-cluster bootstrap interval, convergence, and sparse categories.
 
-If common support is too sparse for a stable model, report the instability rather than forcing an estimate.
+If common support is too sparse for stable estimation, report that rather than forcing an estimate.
 
 ### Secondary historical comparison
 
-The old Grades 1-2 versus Grades 3-5 contrast can be retained only as a secondary comparison to the 2023 cohort report, clearly labeled as such.
+The old Grades 1-2 versus Grades 3-5 contrast can be retained only as a secondary comparison to the previous cohort report.
 
 ### Additional mandatory sensitivity analyses
 
-- participant-random-intercept or otherwise genuinely correlated multinomial model;
+- family-income and guardian-education adjustment;
 - sex-by-grade probability-scale heterogeneity;
 - school-by-grade probability-scale heterogeneity;
-- family-income and tutor-education adjustment if participant-level fields are available;
 - leave-one-school-out analysis;
+- repeated-measures sensitivity with a model that demonstrably converges, or explicit reporting of instability;
 - participant-grouped predictive comparison of categorical grade, linear grade, broad grade group, age-only, and joint age-grade specifications;
 - sparse-cell and separation diagnostics for every multinomial fit.
 
@@ -132,8 +146,6 @@ Do not use the following without stronger design support:
 
 Defensible framing is cross-sectional association with school grade and/or chronological age.
 
-## Input blocker
+## Remaining input blocker
 
-The public repository intentionally contains only anonymized aggregate figure tables. Its builder points to the private local workspace `C:/work/letter_operator_reanalysis`. Exact-age, socioeconomic, and participant-level common-support analyses cannot be executed from the public repository alone.
-
-Required private input is an authoritative deidentified participant-trial table (or the private analysis workspace) containing participant ID, corrected grade, exact age or DOB/testing dates, sex, school, task, trial index, base letter, operator/response, and—if available—family income and tutor education. Raw identifiable data should not be committed to this public repository.
+The private workspace is now available, including participant-level trial data and socioeconomic covariates. The remaining blocker is the participant-level demographic source that produced the corrected Table 1: corrected Grade 1 = 44, Grade 2 = 26 and exact chronological ages in months (or DOB plus testing date). That source must be reconciled with `trial_level_v3.csv` before final grade-specific or exact-age analyses are run.
