@@ -1,25 +1,47 @@
-# Reversible-Letter Operator Figures Repository
+# Reversible-letter rotation judgments: reproducibility repository
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.PLACEHOLDER.svg)](https://doi.org/10.5281/zenodo.PLACEHOLDER)
+This repository supports the manuscript:
 
-## Scope
-This repository contains the exact data and scripts required to reproduce the main and supplementary figures for the manuscript:
-**Aggregate accuracy conceals grade-associated redistribution of spatial transformation choices in reversible-letter judgments**
+**Left-right and top-bottom reflection errors diverge between Grades 2 and 3 in reversible-letter rotation judgments**
 
-This repository is for FIGURE REPRODUCTION from fully anonymized, aggregated tables. It does not contain raw participant-level data.
+prepared for the *Cortex* special issue **Challenging assumptions in neuropsychology**.
 
-## Usage
-To reproduce all figures and run validation tests, execute the provided script:
+## What is public here
 
-**Windows:**
+The repository contains non-identifying aggregate results, figure-generation code, validation tests, and the statistical model specification for the submitted analyses. Participant-level records are not included because the study involved children and the original consent and ethics framework did not authorize unrestricted public release.
+
+The inferential analyses use participant-level trial data under controlled access. `scripts/cortex_models.R` encodes the models reported in the Cortex submission and expects a restricted trial-level file with the schema documented in `docs/restricted_data_schema.md`. The public aggregate snapshot in `data/cortex_submission_results.csv` records the numerical results reported in the submitted manuscript.
+
+## Analysis represented in the Cortex submission
+
+The submission treats grade as a five-level categorical factor and analyzes the three response categories separately within lowercase identification, mirror judgment, and rotation judgment. Nominal multinomial generalized estimating equations cluster the four trials within participant and use robust sandwich covariance. Exact chronological age is modeled explicitly, with spline, socioeconomic, sex-interaction, age-overlap, and error-composition sensitivity analyses. The rotation error-only analysis removes correct rotation trials and compares left-right with top-bottom reflection errors using participant-clustered binary logistic GEE.
+
+See `docs/methods_summary.md` and `docs/reproduction_scope.md` for the exact public/private reproducibility boundary.
+
+## Figure reproduction
+
+The existing aggregate figure pipeline can be run with:
+
+**Windows**
 ```powershell
 .\run_figures.ps1
 ```
 
-**macOS/Linux:**
+**macOS/Linux**
 ```bash
 ./run_figures.sh
 ```
 
-## Figure Map
-See [docs/figure_map.md](docs/figure_map.md) for details on mapping figures to data sources.
+The repository preserves the aggregate figure inputs so that no participant-level data are required for figure regeneration.
+
+## Restricted data
+
+The restricted analysis table contains participant identifiers, school, sex, grade, exact age, socioeconomic variables, task, trial index, base letter, response category, and correctness. No names, dates of birth, or raw identifying files are part of this public repository. Requests for deidentified participant-level data require ethics approval, institutional authorization, and an appropriate data-use agreement.
+
+## Citation and archival release
+
+`CITATION.cff` and `.zenodo.json` contain the metadata for the Cortex submission snapshot. A versioned Zenodo archive will be minted from the frozen repository release; the DOI will be added here after publication of that archive.
+
+## Repository integrity
+
+The repository includes validation tests and environment metadata. The original figure-reproduction scripts remain available under `scripts/`, while the Cortex inferential model specification is in `scripts/cortex_models.R`.
