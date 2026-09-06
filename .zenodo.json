@@ -1,5 +1,5 @@
 {
-  "title": "Aggregate accuracy conceals grade-associated redistribution of spatial transformation choices in reversible-letter judgments",
+  "title": "Left-right and top-bottom reflection errors diverge between Grades 2 and 3 in reversible-letter rotation judgments: reproducibility materials",
   "upload_type": "software",
   "creators": [
     { "name": "Resque, Deusa Priscila da Silva" },
@@ -10,7 +10,22 @@
     { "name": "Matos, Felipe de Oliveira" },
     { "name": "Pereira, Antonio" }
   ],
-  "description": "Reproducibility repository for the figures in the reversible-letter operator manuscript.",
+  "description": "Versioned reproducibility materials for the Cortex submission on reversible-letter rotation judgments. The archive contains analysis code, non-identifying aggregate results, figure-generation code, validation tests, and documentation of the restricted-data schema. Participant-level records are excluded because unrestricted public release is not covered by the original consent and ethics framework for this cohort of children.",
   "access_right": "open",
-  "license": "MIT"
+  "license": "MIT",
+  "keywords": [
+    "letter orientation",
+    "mirror invariance",
+    "reversal errors",
+    "literacy development",
+    "generalized estimating equations",
+    "reproducibility"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/squareshorts/reversible-letter-operator-figures",
+      "relation": "isSupplementTo",
+      "resource_type": "software"
+    }
+  ]
 }
