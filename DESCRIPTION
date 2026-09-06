@@ -1,7 +1,14 @@
 Package: ReversibleLetterOperatorFigures
-Title: Reproducibility repository for Reversible-Letter Operator Figures
-Version: 1.0.0
-Authors@R: person("Deusa", "Resque", email="none@none.com", role=c("aut", "cre"))
-Description: Scripts and data to generate figures for the manuscript.
-Depends: R (>= 4.0.0)
+Title: Reproducibility Materials for Reversible-Letter Rotation Judgments
+Version: 1.1.0
+Authors@R: c(
+    person("Deusa Priscila da Silva", "Resque", role = "aut"),
+    person("Antonio", "Pereira", role = c("aut", "cre"))
+  )
+Description: Public reproducibility materials for the Cortex submission on
+    reversible-letter rotation judgments, including aggregate outputs,
+    figure-generation code, validation tests, restricted-data schema, and
+    inferential model specifications.
+Depends: R (>= 4.5.0)
 License: MIT
+Encoding: UTF-8
