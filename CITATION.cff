@@ -1,6 +1,6 @@
 cff-version: 1.2.0
-message: "If you use this software, please cite it as below."
-title: "Aggregate accuracy conceals grade-associated redistribution of spatial transformation choices in reversible-letter judgments"
+message: "If you use these reproducibility materials, please cite the archived release."
+title: "Left-right and top-bottom reflection errors diverge between Grades 2 and 3 in reversible-letter rotation judgments: reproducibility materials"
 authors:
   - family-names: "Resque"
     given-names: "Deusa Priscila da Silva"
@@ -16,4 +16,13 @@ authors:
     given-names: "Felipe de Oliveira"
   - family-names: "Pereira"
     given-names: "Antonio"
-version: 1.0.0
+version: 1.1.0
+license: MIT
+repository-code: "https://github.com/squareshorts/reversible-letter-operator-figures"
+keywords:
+  - letter orientation
+  - mirror invariance
+  - reversal errors
+  - literacy development
+  - generalized estimating equations
+  - reproducibility
