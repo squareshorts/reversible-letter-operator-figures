@@ -1,0 +1,15 @@
+analysis,task,model,n_participants,n_trials,df,wald_chisq,p_value,beta,se,odds_ratio,ci_low,ci_high,prob_grade2,prob_grade3,notes
+omnibus_grade,lowercase_identification,grade_design,142,568,8,17.27,0.027,,,,,,,,Design covariates: sex; school; base letter; centered trial index
+omnibus_grade,lowercase_identification,exact_age_grade_design,140,560,8,7.58,0.476,,,,,,,,Exact chronological age added
+omnibus_grade,mirror,grade_design,142,568,8,20.49,0.0086,,,,,,,,Design covariates: sex; school; base letter; centered trial index
+omnibus_grade,mirror,exact_age_grade_design,140,560,8,11.47,0.177,,,,,,,,Exact chronological age added
+omnibus_grade,rotation,grade_design,142,568,8,37.98,<0.001,,,,,,,,Design covariates: sex; school; base letter; centered trial index
+omnibus_grade,rotation,exact_age_grade_design,140,560,8,21.88,0.0051,,,,,,,,Primary age-adjusted rotation model
+sensitivity,rotation,spline_age_df3,140,560,8,32.03,<0.001,,,,,,,,Cubic B-spline exact age
+sensitivity,rotation,spline_age_df4,140,560,8,33.43,<0.001,,,,,,,,Cubic B-spline exact age
+sensitivity,rotation,spline_age_df5,140,560,8,30.07,<0.001,,,,,,,,Cubic B-spline exact age
+sensitivity,rotation,exact_age_socioeconomic,140,560,8,21.84,0.0052,,,,,,,,Adds family income and guardian education
+sensitivity,rotation,grade_by_sex_interaction,140,560,8,9.76,0.282,,,,,,,,Joint interaction block
+sensitivity,rotation,grade3_vs_grade2_age_overlap,34,136,2,17.06,<0.001,,,,,,,,Restricted to exact-age overlap 8.38-9.50 years; 6 Grade-2 and 28 Grade-3 children
+error_composition,rotation,linear_exact_age,124,364,,,<0.001,-2.671,0.780,0.069,0.015,0.319,0.429,0.053,Grade 3 versus Grade 2 odds of LR rather than TB reflection among errors only
+error_composition,rotation,spline_age_df3,124,364,,,0.0054,-2.395,0.860,0.091,0.017,0.492,0.343,0.051,Grade 3 versus Grade 2 odds of LR rather than TB reflection among errors only
